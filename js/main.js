@@ -52,20 +52,34 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // Contact Form Handling
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
+    // Check if we're on Netlify (form will submit normally)
+    // If not on Netlify, show success message after submission
     contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Get form data
-        const formData = new FormData(this);
-        const data = Object.fromEntries(formData);
-        
-        // Here you would typically send the data to a server
-        // For now, we'll just show an alert
-        alert('Thank you for your message! We will get back to you soon.');
-        
-        // Reset form
-        this.reset();
+        // On Netlify, the form will submit automatically
+        // We'll add a success message that shows after redirect
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('submitted') === 'true') {
+            // Show success message if redirected from Netlify
+            showFormSuccess();
+        }
     });
+    
+    // Function to show success message
+    function showFormSuccess() {
+        const formWrapper = document.querySelector('.contact-form-wrapper');
+        if (formWrapper) {
+            const successMsg = document.createElement('div');
+            successMsg.className = 'form-success';
+            successMsg.innerHTML = `
+                <div style="background: #10b981; color: white; padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem; text-align: center;">
+                    <h3 style="margin: 0 0 0.5rem 0; font-size: 1.25rem;">✓ Message Sent Successfully!</h3>
+                    <p style="margin: 0; opacity: 0.95;">Thank you for your message! We will get back to you soon.</p>
+                </div>
+            `;
+            formWrapper.insertBefore(successMsg, contactForm);
+            contactForm.style.display = 'none';
+        }
+    }
 }
 
 // Add scroll effect to navbar
