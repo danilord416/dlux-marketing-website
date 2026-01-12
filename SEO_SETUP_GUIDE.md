@@ -11,16 +11,9 @@
 
 ## Important: Update Your Domain
 
-I've used `https://dluxmarketing.com` as a placeholder in the meta tags and sitemap. **You need to replace this with your actual domain name** if it's different.
+✅ **Domain has been set to:** `https://www.dlux-marketing.com`
 
-To find your domain:
-1. Check your Netlify dashboard
-2. Look at your site URL (e.g., `your-site-name.netlify.app` or your custom domain)
-
-Then update these files:
-- `sitemap.xml` - Replace all instances of `dluxmarketing.com` with your actual domain
-- `index.html` - Update the Open Graph URLs and canonical URL
-- All other HTML files - Update canonical URLs
+All files have been updated with your correct domain name.
 
 ## Critical Next Steps to Get Found on Google
 
@@ -40,7 +33,7 @@ This is the #1 reason your site isn't showing up. Google needs to know your site
 6. Once verified, click "Request Indexing" for your homepage
 
 **After verification:**
-- Submit your sitemap: Go to "Sitemaps" → Add `https://your-domain.com/sitemap.xml`
+- Submit your sitemap: Go to "Sitemaps" → Add `https://www.dlux-marketing.com/sitemap.xml`
 - Request indexing for your main pages (homepage, services, about)
 
 ### 2. Make Sure Your Site is Live and Accessible
@@ -72,7 +65,7 @@ Google needs to see that other sites link to you. Some ways to get started:
 ## How to Check if Google Has Indexed Your Site
 
 1. Go to Google Search Console → "Coverage" report
-2. Or search Google for: `site:your-domain.com`
+2. Or search Google for: `site:www.dlux-marketing.com`
 3. If pages show up, you're indexed!
 
 ## Additional SEO Tips
@@ -102,7 +95,7 @@ If you're still not showing up after 4-6 weeks:
 
 ## Quick Checklist
 
-- [ ] Update domain name in sitemap.xml and meta tags
+- [x] Update domain name in sitemap.xml and meta tags ✅
 - [ ] Set up Google Search Console
 - [ ] Submit sitemap to Google Search Console
 - [ ] Request indexing for main pages

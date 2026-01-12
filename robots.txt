@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://dluxmarketing.com/sitemap.xml
+Sitemap: https://www.dlux-marketing.com/sitemap.xml
 
