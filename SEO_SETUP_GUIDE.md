@@ -25,7 +25,7 @@ This is the #1 reason your site isn't showing up. Google needs to know your site
 1. Go to [Google Search Console](https://search.google.com/search-console)
 2. Sign in with your Google account
 3. Click "Add Property" → "URL prefix"
-4. Enter your website URL (e.g., `https://your-domain.com` or `https://your-site.netlify.app`)
+4. Enter your website URL: `https://www.dlux-marketing.com`
 5. Verify ownership using one of these methods:
    - **HTML file upload** (easiest for Netlify)
    - **HTML tag** (add meta tag to your homepage)
