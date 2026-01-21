@@ -113,14 +113,69 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
+// Enhanced scroll animations
+const enhancedObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -100px 0px'
+});
+
 // Observe elements for fade-in animation
 document.addEventListener('DOMContentLoaded', () => {
+    // Original fade-in elements
     const animateElements = document.querySelectorAll('.service-card, .feature-item, .blog-card, .stat-item');
     animateElements.forEach(el => {
         el.style.opacity = '0';
         el.style.transform = 'translateY(20px)';
         el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
         observer.observe(el);
+    });
+    
+    // Add fade-in class to sections
+    const sections = document.querySelectorAll('section');
+    sections.forEach((section, index) => {
+        if (index > 0) { // Skip first section (hero)
+            section.classList.add('fade-in');
+            enhancedObserver.observe(section);
+        }
+    });
+    
+    // Animate founder spotlight content
+    const founderContent = document.querySelector('.founder-spotlight-content');
+    if (founderContent) {
+        const imageWrapper = founderContent.querySelector('.founder-image-wrapper');
+        const textContent = founderContent.querySelector('.founder-text-content');
+        
+        if (imageWrapper) {
+            imageWrapper.classList.add('slide-in-left');
+            enhancedObserver.observe(imageWrapper);
+        }
+        if (textContent) {
+            textContent.classList.add('slide-in-right');
+            enhancedObserver.observe(textContent);
+        }
+    }
+    
+    // Animate service navigation items
+    const serviceNavItems = document.querySelectorAll('.service-nav-item');
+    serviceNavItems.forEach((item, index) => {
+        item.classList.add('fade-in');
+        item.style.transitionDelay = `${index * 0.1}s`;
+        enhancedObserver.observe(item);
+    });
+    
+    // Animate buttons on scroll
+    const buttons = document.querySelectorAll('.btn');
+    buttons.forEach(btn => {
+        if (!btn.closest('.hero-buttons')) { // Don't animate hero buttons
+            btn.classList.add('scale-in');
+            enhancedObserver.observe(btn);
+        }
     });
 });
 
