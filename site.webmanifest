@@ -1,0 +1,22 @@
+{
+    "name": "DLux Marketing",
+    "short_name": "DLux",
+    "description": "Digital Marketing Solutions",
+    "icons": [
+        {
+            "src": "/assets/4.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/assets/4.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#070070",
+    "background_color": "#ffffff",
+    "display": "standalone",
+    "start_url": "/"
+}
+
