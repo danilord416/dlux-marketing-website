@@ -125,6 +125,25 @@ You can create a custom success page:
 3. **Set up Zapier** for free email notifications (recommended)
 4. **Or subscribe** to Netlify email add-on if you prefer
 
+## Receiving submissions at dani.dluxmarketing@gmail.com
+
+To have each form submission emailed to **dani.dluxmarketing@gmail.com**:
+
+### Option A: Netlify Form notifications (if available on your plan)
+1. In Netlify: **Site** → **Configuration** → **Notifications**
+2. Under **Form submission notifications**, click **Add notification**
+3. Choose **Email notification**
+4. Enter **dani.dluxmarketing@gmail.com** and save
+
+### Option B: Zapier (free)
+1. Sign up at [zapier.com](https://zapier.com)
+2. Create a Zap: **Trigger** = Netlify → New Form Submission
+3. **Action** = Email by Zapier → Send yourself an email (to dani.dluxmarketing@gmail.com)
+4. Turn the Zap on
+
+### Option C: Check the Netlify dashboard
+- Go to **Site** → **Forms** to view all submissions (no email needed; you can reply from there)
+
 Your form is ready to go! 🎉
 
 

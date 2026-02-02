@@ -85,11 +85,12 @@
                 </div>
 
                 <div class="contact-form-wrapper">
-                    <form class="contact-form" id="contactForm" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-                        <input type="hidden" name="form-name" value="contact">
-                        <p style="display: none;">
-                            <label>Don't fill this out if you're human: <input name="bot-field" /></label>
-                        </p>
+                    <div id="formSuccessMessage" class="form-success-message" style="display: none;">
+                        <h3>Thank you!</h3>
+                        <p>Your message has been sent successfully. We'll get back to you at the email you provided as soon as possible.</p>
+                    </div>
+                    <!-- Form submits to Formspree - emails go to dani.dluxmarketing@gmail.com -->
+                    <form class="contact-form" id="contactForm" method="POST" action="https://formspree.io/f/mnjzlnjy">
                         <div class="form-group">
                             <label for="name">Full Name *</label>
                             <input type="text" id="name" name="name" required>
@@ -174,6 +175,38 @@
     </footer>
 
     <script src="js/main.js"></script>
+    <script>
+        // Submit contact form via Formspree (free - emails go to your Formspree address)
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            var form = this;
+            var formData = new FormData(form);
+            var submitBtn = form.querySelector('button[type="submit"]');
+            var successMsg = document.getElementById('formSuccessMessage');
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+
+            fetch(form.action, {
+                method: 'POST',
+                body: formData,
+                headers: { 'Accept': 'application/json' }
+            })
+            .then(function(response) {
+                if (response.ok) {
+                    form.style.display = 'none';
+                    successMsg.style.display = 'block';
+                } else {
+                    throw new Error('Submit failed');
+                }
+            })
+            .catch(function() {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Send Message';
+                alert('Something went wrong. Please try again or email dani.dluxmarketing@gmail.com directly.');
+            });
+        });
+    </script>
 </body>
 </html>
 

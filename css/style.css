@@ -1594,6 +1594,25 @@ body {
     min-height: 120px;
 }
 
+.form-success-message {
+    background: var(--bg-light);
+    padding: 2.5rem;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.form-success-message h3 {
+    color: var(--primary-color);
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+}
+
+.form-success-message p {
+    color: var(--text-medium);
+    font-size: 1.125rem;
+    line-height: 1.6;
+}
+
 /* Blog Section */
 .blog-section {
     padding: 5rem 0;
