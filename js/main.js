@@ -113,11 +113,12 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-// Enhanced scroll animations
+// Enhanced scroll animations - Updated for premium animations
 const enhancedObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.classList.add('visible');
+            entry.target.classList.add('revealed');
         }
     });
 }, {

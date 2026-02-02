@@ -5,45 +5,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     
     // ============================================
-    // 1. CUSTOM CURSOR
-    // ============================================
-    const cursor = document.createElement('div');
-    cursor.className = 'custom-cursor';
-    document.body.appendChild(cursor);
-
-    let mouseX = 0, mouseY = 0;
-    let cursorX = 0, cursorY = 0;
-
-    document.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-    });
-
-    // Smooth cursor follow with spring effect
-    function animateCursor() {
-        const diffX = mouseX - cursorX;
-        const diffY = mouseY - cursorY;
-        
-        cursorX += diffX * 0.15;
-        cursorY += diffY * 0.15;
-        
-        cursor.style.left = cursorX + 'px';
-        cursor.style.top = cursorY + 'px';
-        
-        requestAnimationFrame(animateCursor);
-    }
-    animateCursor();
-
-    // Cursor hover effect on interactive elements
-    const interactiveElements = document.querySelectorAll('a, button, .btn, .service-card, input, textarea, select');
-    
-    interactiveElements.forEach(el => {
-        el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-        el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
-    });
-
-    // ============================================
-    // 2. GLASSMORPHISM NAVBAR ON SCROLL
+    // 1. GLASSMORPHISM NAVBAR ON SCROLL
     // ============================================
     const navbar = document.querySelector('.navbar');
     
