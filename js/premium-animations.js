@@ -193,6 +193,62 @@ document.addEventListener('DOMContentLoaded', () => {
         typingTitle.style.whiteSpace = 'nowrap';
         typingTitle.style.animation = 'typing 2s steps(20) 1s both, blink 1s step-end infinite';
     }
+
+    // ============================================
+    // 11. TESTIMONIAL SLIDER
+    // ============================================
+    const testimonialSlides = document.querySelectorAll('.testimonial-slide');
+    const testimonialDots = document.querySelectorAll('.testimonial-dot');
+    let currentSlide = 0;
+    let slideInterval;
+
+    function showSlide(index) {
+        // Hide all slides
+        testimonialSlides.forEach((slide, i) => {
+            if (i === currentSlide) {
+                slide.classList.add('fade-out');
+            }
+            setTimeout(() => {
+                slide.classList.remove('active', 'fade-out');
+            }, 300);
+        });
+
+        // Update dots
+        testimonialDots.forEach(dot => dot.classList.remove('active'));
+        testimonialDots.forEach(dot => dot.style.background = 'var(--border-color)');
+
+        // Show target slide after a brief delay
+        setTimeout(() => {
+            currentSlide = index;
+            testimonialSlides[currentSlide].classList.add('active');
+            testimonialDots[currentSlide].classList.add('active');
+            testimonialDots[currentSlide].style.background = 'var(--primary-color)';
+        }, 300);
+    }
+
+    function nextSlide() {
+        const next = (currentSlide + 1) % testimonialSlides.length;
+        showSlide(next);
+    }
+
+    // Auto-rotate every 5 seconds
+    function startSlideshow() {
+        slideInterval = setInterval(nextSlide, 5000);
+    }
+
+    // Click handlers for dots
+    testimonialDots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            clearInterval(slideInterval);
+            showSlide(index);
+            startSlideshow();
+        });
+    });
+
+    // Start the slideshow if testimonials exist
+    if (testimonialSlides.length > 1) {
+        startSlideshow();
+    }
 });
 
 // Add CSS for button ripple effect

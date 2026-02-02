@@ -2154,6 +2154,43 @@ body {
     box-shadow: var(--shadow-md);
 }
 
+/* Testimonial Slider */
+.testimonial-slider {
+    position: relative;
+}
+
+.testimonial-slide {
+    display: none;
+    opacity: 0;
+    transform: translateX(30px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.testimonial-slide.active {
+    display: block;
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.testimonial-slide.fade-out {
+    opacity: 0;
+    transform: translateX(-30px);
+}
+
+.testimonial-dot {
+    opacity: 0.5;
+}
+
+.testimonial-dot.active {
+    opacity: 1;
+    transform: scale(1.2);
+}
+
+.testimonial-dot:hover {
+    opacity: 0.8;
+    transform: scale(1.1);
+}
+
 /* Reveal Animation Classes */
 .reveal-element {
     opacity: 0;
