@@ -30,6 +30,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    cursor: none;
 }
 
 html {
@@ -42,6 +43,39 @@ body {
     line-height: 1.6;
     background-color: var(--bg-white);
     overflow-x: hidden;
+    cursor: none;
+}
+
+/* Custom Cursor */
+.custom-cursor {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--primary-color);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 10000;
+    transition: transform 0.15s ease, width 0.15s ease, height 0.15s ease;
+    mix-blend-mode: difference;
+    background: rgba(82, 113, 255, 0.2);
+}
+
+.custom-cursor.hover {
+    transform: scale(1.5);
+    background: rgba(82, 113, 255, 0.4);
+}
+
+/* Mobile - disable custom cursor */
+@media (max-width: 768px) {
+    * {
+        cursor: auto !important;
+    }
+    body {
+        cursor: auto !important;
+    }
+    .custom-cursor {
+        display: none;
+    }
 }
 
 .container {
@@ -52,12 +86,21 @@ body {
 
 /* Navigation */
 .navbar {
-    background: var(--text-dark);
+    background: rgba(31, 41, 55, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     box-shadow: var(--shadow-sm);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     position: sticky;
     top: 0;
     z-index: 1000;
     padding: 1rem 0;
+    transition: all 0.3s ease;
+}
+
+.navbar.scrolled {
+    background: rgba(31, 41, 55, 0.95);
+    box-shadow: var(--shadow-md);
 }
 
 .nav-wrapper {
@@ -138,6 +181,13 @@ body {
     padding: 5px;
 }
 
+/* Fix cursor for mobile toggle */
+@media (max-width: 768px) {
+    .mobile-menu-toggle {
+        cursor: pointer !important;
+    }
+}
+
 .mobile-menu-toggle span {
     width: 25px;
     height: 3px;
@@ -154,16 +204,60 @@ body {
     overflow: hidden;
 }
 
+.hero-background-animated {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 30%, rgba(82, 113, 255, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(7, 0, 112, 0.06) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(82, 113, 255, 0.04) 0%, transparent 50%);
+    animation: meshGradient 15s ease-in-out infinite;
+    z-index: 0;
+}
+
+@keyframes meshGradient {
+    0%, 100% {
+        background-position: 0% 0%, 100% 100%, 50% 50%;
+        background-size: 100% 100%, 100% 100%, 100% 100%;
+    }
+    50% {
+        background-position: 100% 100%, 0% 0%, 25% 75%;
+        background-size: 150% 150%, 150% 150%, 120% 120%;
+    }
+}
+
+/* Animated Mesh Gradient Background */
 .hero::before {
     content: '';
     position: absolute;
-    top: -200px;
-    right: -200px;
-    width: 600px;
-    height: 600px;
-    background: linear-gradient(135deg, rgba(82, 113, 255, 0.1) 0%, rgba(7, 0, 112, 0.1) 100%);
-    border-radius: 50%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 50%, rgba(82, 113, 255, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(7, 0, 112, 0.12) 0%, transparent 50%),
+        radial-gradient(circle at 40% 20%, rgba(82, 113, 255, 0.1) 0%, transparent 50%);
+    animation: meshMove 20s ease-in-out infinite;
     z-index: 0;
+}
+
+@keyframes meshMove {
+    0%, 100% { 
+        transform: translate(0, 0) scale(1); 
+        opacity: 1;
+    }
+    33% { 
+        transform: translate(30px, -30px) scale(1.1); 
+        opacity: 0.8;
+    }
+    66% { 
+        transform: translate(-20px, 20px) scale(0.95); 
+        opacity: 0.9;
+    }
 }
 
 .hero::after {
@@ -176,6 +270,12 @@ body {
     background: linear-gradient(135deg, rgba(7, 0, 112, 0.08) 0%, rgba(82, 113, 255, 0.08) 100%);
     border-radius: 50%;
     z-index: 0;
+    animation: float 15s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(40px, 40px); }
 }
 
 .hero .container {
@@ -227,6 +327,28 @@ body {
     color: var(--text-dark);
 }
 
+/* Rotating Text Animation */
+.rotating-text-wrapper {
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    height: 1.2em;
+    vertical-align: bottom;
+}
+
+.rotating-text {
+    display: block;
+    animation: rotateText 12s infinite;
+}
+
+@keyframes rotateText {
+    0%, 22% { transform: translateY(0); }
+    25%, 47% { transform: translateY(-100%); }
+    50%, 72% { transform: translateY(-200%); }
+    75%, 97% { transform: translateY(-300%); }
+    100% { transform: translateY(0); }
+}
+
 .hero-subtitle {
     font-size: 1.25rem;
     color: var(--text-medium);
@@ -247,10 +369,30 @@ body {
     border-radius: 8px;
     text-decoration: none;
     font-weight: 600;
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     border: none;
     cursor: pointer;
     font-size: 1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+.btn:hover::before {
+    width: 300px;
+    height: 300px;
 }
 
 .btn-primary {
@@ -366,10 +508,12 @@ body {
     padding: 2rem;
     border-radius: 12px;
     border: 1px solid var(--border-color);
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     box-shadow: var(--shadow-sm);
     position: relative;
     overflow: hidden;
+    transform-style: preserve-3d;
+    perspective: 1000px;
 }
 
 .service-card::before {
@@ -385,19 +529,50 @@ body {
     transition: transform 0.3s ease;
 }
 
+.service-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 12px;
+    padding: 1px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
 .service-card:hover::before {
     transform: scaleX(1);
 }
 
+.service-card:hover::after {
+    opacity: 1;
+}
+
 .service-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-lg);
-    border-color: var(--secondary-color);
+    transform: translateY(-8px) rotateX(2deg);
+    box-shadow: 0 20px 40px rgba(7, 0, 112, 0.15);
+    border-color: transparent;
+}
+
+.service-card:hover .service-image img {
+    transform: scale(1.05);
+}
+
+.service-card:hover h3 {
+    color: var(--primary-color);
 }
 
 .service-icon {
     font-size: 3rem;
     margin-bottom: 1rem;
+    transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.service-card:hover .service-icon {
+    transform: scale(1.1) rotate(5deg);
 }
 
 .service-image {
@@ -412,11 +587,7 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.3s ease;
-}
-
-.service-card:hover .service-image img {
-    transform: scale(1.05);
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .service-card h3 {
@@ -424,6 +595,7 @@ body {
     font-weight: 600;
     margin-bottom: 1rem;
     color: var(--text-dark);
+    transition: color 0.3s ease;
 }
 
 .service-card p {
@@ -2022,6 +2194,27 @@ body {
     box-shadow: var(--shadow-md);
 }
 
+/* Reveal Animation Classes */
+.reveal-element {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.reveal-element.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Stagger delays for grid items */
+.service-card.reveal-element:nth-child(1) { transition-delay: 0.1s; }
+.service-card.reveal-element:nth-child(2) { transition-delay: 0.2s; }
+.service-card.reveal-element:nth-child(3) { transition-delay: 0.3s; }
+.service-card.reveal-element:nth-child(4) { transition-delay: 0.4s; }
+.service-card.reveal-element:nth-child(5) { transition-delay: 0.5s; }
+.service-card.reveal-element:nth-child(6) { transition-delay: 0.6s; }
+
 /* Mobile Responsive for Back to Top */
 @media (max-width: 768px) {
     .back-to-top {
@@ -2039,6 +2232,10 @@ body {
     
     .founder-spotlight-content h2 {
         font-size: 2rem !important;
+    }
+    
+    .rotating-text-wrapper {
+        min-width: auto !important;
     }
 }
 
@@ -2196,4 +2393,3 @@ section {
         transform: translateY(0);
     }
 }
-
