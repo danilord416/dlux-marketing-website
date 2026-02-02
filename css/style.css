@@ -435,19 +435,19 @@ body {
 #typing-title {
     position: relative;
     display: inline-block;
+    overflow: hidden;
+    border-right: 3px solid var(--secondary-color);
+    white-space: nowrap;
+    animation: blink-caret 0.75s step-end infinite;
 }
 
 #typing-title.typing::after {
-    content: '|';
-    animation: blink 1s infinite;
-    color: var(--secondary-color);
-    font-weight: 300;
-    margin-left: 2px;
+    content: '';
 }
 
-@keyframes blink {
-    0%, 50% { opacity: 1; }
-    51%, 100% { opacity: 0; }
+@keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: var(--secondary-color); }
 }
 
 .section-header p {
