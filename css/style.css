@@ -50,47 +50,23 @@ body {
     padding: 0 20px;
 }
 
-/* Navigation - Brand colors with subtle motion */
+/* Navigation */
 .navbar {
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 50%, var(--secondary-color) 100%);
+    background: rgba(31, 41, 55, 0.8);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     box-shadow: var(--shadow-sm);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     position: sticky;
     top: 0;
     z-index: 1000;
     padding: 1rem 0;
     transition: all 0.3s ease;
-    overflow: hidden;
-}
-
-.navbar::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse 100% 80% at 80% 20%, rgba(255, 255, 255, 0.08) 0%, transparent 50%),
-                radial-gradient(ellipse 60% 60% at 10% 80%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
-    pointer-events: none;
-    animation: navGlow 10s ease-in-out infinite;
-}
-
-@keyframes navGlow {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.7; }
-}
-
-.navbar .container {
-    position: relative;
-    z-index: 1;
 }
 
 .navbar.scrolled {
+    background: rgba(31, 41, 55, 0.95);
     box-shadow: var(--shadow-md);
-}
-
-.navbar.scrolled::before {
-    opacity: 0.9;
 }
 
 .nav-wrapper {
@@ -1002,16 +978,19 @@ body {
 
 /* Service deep-dive page sections */
 .service-hero-cta { margin-top: 1.5rem; }
-.problem-solution-section { padding: 4rem 0; background: var(--bg-light); }
+.problem-solution-section { padding: 4rem 0; background: var(--bg-light); text-align: center; }
+.problem-solution-section .container { max-width: 800px; margin-left: auto; margin-right: auto; }
 .problem-solution-section h2 { font-size: 2rem; margin-bottom: 1.5rem; color: var(--text-dark); }
 .problem-solution-section .problem { margin-bottom: 2rem; }
 .problem-solution-section .solution { margin-top: 2rem; }
+.problem-solution-section .problem p,
+.problem-solution-section .solution p { text-align: center; }
 .service-visual { padding: 3rem 0; text-align: center; background: linear-gradient(180deg, var(--bg-white) 0%, var(--bg-light) 100%); }
 .service-visual .service-figure { margin: 0; max-width: 800px; margin: 0 auto; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-lg); }
 .service-visual .service-figure img { width: 100%; height: auto; display: block; }
-.service-breakdown-section { padding: 4rem 0; }
+.service-breakdown-section { padding: 4rem 0; text-align: center; }
 .service-breakdown-section h2 { font-size: 2rem; margin-bottom: 2rem; color: var(--text-dark); }
-.service-breakdown-section .breakdown-content { max-width: 800px; }
+.service-breakdown-section .breakdown-content { max-width: 800px; margin-left: auto; margin-right: auto; text-align: center; }
 .service-breakdown-section .breakdown-content p { margin-bottom: 1.25rem; color: var(--text-medium); line-height: 1.8; }
 .our-process-section { padding: 4rem 0; background: var(--bg-light); }
 .our-process-section h2 { font-size: 2rem; margin-bottom: 2.5rem; text-align: center; color: var(--text-dark); }
@@ -1035,8 +1014,9 @@ body {
 .certified-expertise h2 { font-size: 2rem; margin-bottom: 1.5rem; color: var(--text-dark); }
 .cert-badges { display: flex; flex-wrap: wrap; gap: 2rem; align-items: center; margin-top: 1rem; }
 .cert-badges img { height: 80px; width: auto; border-radius: 8px; }
-.container.cert-badges-only { display: flex; justify-content: center; align-items: center; padding: 2rem 0; }
-.container.cert-badges-only .cert-badges { margin-top: 0; }
+.container.cert-badges-only { display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 2rem 0; text-align: center; }
+.container.cert-badges-only .cert-badges { margin-top: 1rem; }
+.container.cert-badges-only .certifications-title { font-size: 2rem; margin-bottom: 0; color: var(--text-dark); font-weight: 700; }
 .reveal-on-scroll { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
 .reveal-on-scroll.visible { opacity: 1; transform: translateY(0); }
 @media (max-width: 768px) {
