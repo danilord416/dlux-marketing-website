@@ -205,9 +205,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             backToTop.classList.remove('visible');
         }
-    });
-
-    // Scroll to top when clicked
+    });    // Scroll to top when clicked
     backToTop.addEventListener('click', () => {
         window.scrollTo({
             top: 0,
