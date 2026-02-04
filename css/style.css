@@ -880,6 +880,45 @@ body {
     overflow: hidden;
 }
 
+/* Animated circles on services hub header (like homepage hero) */
+.page-header-hero.page-header-hero-animated .hero-background-animated {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+/* Service page headers with background image + gradient overlay */
+.page-header-hero.page-header-bg-website-design {
+    background-image: linear-gradient(135deg, rgba(7,0,112,0.88) 0%, rgba(10,0,144,0.85) 50%, rgba(82,113,255,0.82) 100%), url("https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1920&q=80");
+    background-size: cover;
+    background-position: center;
+}
+.page-header-hero.page-header-bg-digital-advertising {
+    background-image: linear-gradient(135deg, rgba(7,0,112,0.88) 0%, rgba(10,0,144,0.85) 50%, rgba(82,113,255,0.82) 100%), url("https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1920&q=80");
+    background-size: cover;
+    background-position: center;
+}
+.page-header-hero.page-header-bg-seo {
+    background-image: linear-gradient(135deg, rgba(7,0,112,0.88) 0%, rgba(10,0,144,0.85) 50%, rgba(82,113,255,0.82) 100%), url("https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=1920&q=80");
+    background-size: cover;
+    background-position: center;
+}
+.page-header-hero.page-header-bg-consulting {
+    background-image: linear-gradient(135deg, rgba(7,0,112,0.88) 0%, rgba(10,0,144,0.85) 50%, rgba(82,113,255,0.82) 100%), url("https://images.unsplash.com/photo-1552664730-d307ca884978?w=1920&q=80");
+    background-size: cover;
+    background-position: center;
+}
+.page-header-hero.page-header-bg-graphic-design {
+    background-image: linear-gradient(135deg, rgba(7,0,112,0.88) 0%, rgba(10,0,144,0.85) 50%, rgba(82,113,255,0.82) 100%), url("https://images.unsplash.com/photo-1561070791-2526d30994b5?w=1920&q=80");
+    background-size: cover;
+    background-position: center;
+}
+.page-header-hero.page-header-bg-social-media {
+    background-image: linear-gradient(135deg, rgba(7,0,112,0.88) 0%, rgba(10,0,144,0.85) 50%, rgba(82,113,255,0.82) 100%), url("https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=1920&q=80");
+    background-size: cover;
+    background-position: center;
+}
+
 .page-header-hero::before {
     content: '';
     position: absolute;
@@ -1099,8 +1138,19 @@ body {
 
 .our-process-section { padding: 4rem 0; background: var(--bg-light); }
 .our-process-section h2 { font-size: 2rem; margin-bottom: 2.5rem; text-align: center; color: var(--text-dark); }
-.process-timeline { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2rem; margin-top: 2rem; }
-.process-timeline .step { text-align: center; padding: 1.5rem; }
+.process-timeline { display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-start; gap: 0; margin-top: 2rem; }
+.process-timeline .step { flex: 0 1 220px; max-width: 240px; text-align: center; padding: 1.5rem; position: relative; }
+.process-timeline .step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: -28px;
+    top: 2rem;
+    width: 32px;
+    height: 32px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%235271ff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' opacity='0.8'%3E%3Cpath d='M9 5l7 7-7 7'/%3E%3C/svg%3E") no-repeat center;
+    background-size: 24px 24px;
+    z-index: 1;
+}
 .process-timeline .step-number { width: 56px; height: 56px; background: var(--primary-color); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.25rem; margin: 0 auto 1rem; }
 .process-timeline .step h3 { margin-bottom: 0.75rem; color: var(--text-dark); }
 .process-timeline .step p { font-size: 0.95rem; color: var(--text-medium); line-height: 1.6; }
@@ -1126,7 +1176,16 @@ body {
 .reveal-on-scroll.visible { opacity: 1; transform: translateY(0); }
 @media (max-width: 768px) {
     .page-header-hero { padding: 3.5rem 0; }
-    .process-timeline { grid-template-columns: 1fr; }
+    .process-timeline { flex-direction: column; align-items: center; }
+    .process-timeline .step { max-width: 100%; }
+    .process-timeline .step:not(:last-child)::after {
+        right: auto;
+        top: auto;
+        bottom: -24px;
+        left: 50%;
+        transform: translateX(-50%) rotate(90deg);
+        background-size: 20px 20px;
+    }
     .results-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
