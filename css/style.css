@@ -120,6 +120,62 @@ body {
     background: var(--secondary-color);
 }
 
+/* Services dropdown */
+.nav-dropdown {
+    position: relative;
+}
+.nav-dropdown .nav-dropdown-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+.nav-dropdown .nav-dropdown-toggle::after {
+    content: '';
+    width: 0;
+    height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 5px solid currentColor;
+    margin-left: 2px;
+}
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin: 0;
+    padding: 0.5rem 0;
+    list-style: none;
+    background: rgba(31, 41, 55, 0.98);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    min-width: 220px;
+    box-shadow: var(--shadow-lg);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(8px);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+    z-index: 100;
+}
+.nav-dropdown:hover .dropdown-menu,
+.nav-dropdown:focus-within .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(4px);
+}
+.dropdown-menu a {
+    display: block;
+    padding: 0.6rem 1.25rem;
+    color: rgba(255, 255, 255, 0.9);
+    white-space: nowrap;
+}
+.dropdown-menu a:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+}
+.dropdown-menu li {
+    margin: 0;
+}
+
 .btn-nav {
     background: var(--primary-color);
     color: white !important;
@@ -992,6 +1048,55 @@ body {
 .service-breakdown-section h2 { font-size: 2rem; margin-bottom: 2rem; color: var(--text-dark); }
 .service-breakdown-section .breakdown-content { max-width: 800px; margin-left: auto; margin-right: auto; text-align: center; }
 .service-breakdown-section .breakdown-content p { margin-bottom: 1.25rem; color: var(--text-medium); line-height: 1.8; }
+
+/* What's Included - icon cards */
+.included-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+    text-align: center;
+}
+.included-card {
+    background: var(--bg-white);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.75rem 1.5rem;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.included-card:hover {
+    box-shadow: var(--shadow-md);
+    border-color: var(--primary-color);
+}
+.included-icon {
+    width: 56px;
+    height: 56px;
+    margin: 0 auto 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(7, 0, 112, 0.08) 0%, rgba(82, 113, 255, 0.12) 100%);
+    border-radius: 12px;
+    color: var(--primary-color);
+}
+.included-icon svg {
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+}
+.included-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-dark);
+}
+.included-card p {
+    font-size: 0.95rem;
+    color: var(--text-medium);
+    line-height: 1.6;
+    margin: 0;
+}
+
 .our-process-section { padding: 4rem 0; background: var(--bg-light); }
 .our-process-section h2 { font-size: 2rem; margin-bottom: 2.5rem; text-align: center; color: var(--text-dark); }
 .process-timeline { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2rem; margin-top: 2rem; }
@@ -2182,6 +2287,22 @@ body {
 
     .nav-menu.active {
         left: 0;
+    }
+
+    .nav-dropdown .dropdown-menu {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        padding: 0.5rem 0 0.5rem 1rem;
+        min-width: 0;
+    }
+    .nav-dropdown .dropdown-menu a {
+        padding: 0.5rem 0;
+        font-size: 0.95rem;
     }
 
     .mobile-menu-toggle {

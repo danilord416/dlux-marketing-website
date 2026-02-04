@@ -13,7 +13,7 @@
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - DLux Marketing</title>
+    <title>Contact - DLux Marketing</title>
     <meta name="description" content="Contact DLux Marketing for digital marketing services. Get in touch to discuss website design, SEO, advertising, social media, and more.">
     <link rel="canonical" href="https://www.dlux-marketing.com/contact.html">
     
@@ -48,8 +48,18 @@
                 </button>
                 <ul class="nav-menu">
                     <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About</a></li>
-                    <li><a href="services.html">Services</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li class="nav-dropdown">
+                        <a href="services.html" class="nav-dropdown-toggle">Services</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="services/website-design.html">Website Design</a></li>
+                            <li><a href="services/digital-advertising.html">Digital Advertising</a></li>
+                            <li><a href="services/seo.html">SEO</a></li>
+                            <li><a href="services/consulting.html">Consulting</a></li>
+                            <li><a href="services/graphic-design.html">Graphic Design</a></li>
+                            <li><a href="services/social-media-management.html">Social Media</a></li>
+                        </ul>
+                    </li>
                     <li><a href="blog.html">Blog</a></li>
                     <li><a href="contact.html" class="btn-nav active">Get Started</a></li>
                 </ul>
@@ -88,7 +98,7 @@
                 <div class="contact-form-wrapper">
                     <div id="formSuccessMessage" class="form-success-message" style="display: none;">
                         <h3>Thank you!</h3>
-                        <p>Your message has been sent successfully. We'll get back to you at the email you provided as soon as possible.</p>
+                        <p>Your message has been sent successfully. You will receive a response at the email you provided as soon as possible.</p>
                     </div>
                     <!-- Form submits to Formspree - emails go to dani.dluxmarketing@gmail.com -->
                     <form class="contact-form" id="contactForm" method="POST" action="https://formspree.io/f/mnjzlnjy">
